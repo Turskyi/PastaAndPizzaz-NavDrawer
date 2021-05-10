@@ -35,52 +35,12 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var titles: Array<String>
     private lateinit var drawerList: ListView
     private lateinit var drawerLayout: DrawerLayout
-    private var currentPosition = 0
+    private var currentPosition = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         initView(savedInstanceState)
         initListeners()
-    }
-
-    private fun initListeners() {
-        drawerList.onItemClickListener = DrawerItemClickListener()
-        drawerLayout.addDrawerListener(drawerListener)
-        supportFragmentManager.addOnBackStackChangedListener {
-            val fragMan: FragmentManager = supportFragmentManager
-            val fragment = fragMan.findFragmentByTag(VISIBLE_FRAGMENT);
-            if (fragment is TopFragment) currentPosition = 0
-            if (fragment is PizzaFragment) currentPosition = 1
-            if (fragment is PastaFragment) currentPosition = 2
-            if (fragment is StoresFragment) currentPosition = 3
-            setActionBarTitle(currentPosition)
-            drawerList.setItemChecked(currentPosition, true)
-        }
-    }
-
-    private fun initView(savedInstanceState: Bundle?) {
-        titles = resources.getStringArray(R.array.titles)
-        drawerList = findViewById(R.id.drawer)
-        drawerLayout = findViewById(R.id.drawer_layout)
-        /* Display the correct fragment. */
-        if (savedInstanceState != null) {
-            currentPosition = savedInstanceState.getInt(POSITION)
-            setActionBarTitle(currentPosition)
-        } else {
-            selectItem(0)
-        }
-        /* Populate the ListView */
-        drawerList.adapter = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_activated_1, titles as Array<out String>
-        )
-        /* Create the ActionBarDrawerToggle */
-        drawerToggle = ActionBarDrawerToggle(
-            this, drawerLayout, null,
-            R.string.navigation_drawer_open, R.string.navigation_drawer_close
-        )
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-        supportActionBar?.setHomeButtonEnabled(true)
     }
 
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
@@ -154,6 +114,46 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         }
     }
 
+    private fun initListeners() {
+        drawerList.onItemClickListener = DrawerItemClickListener()
+        drawerLayout.addDrawerListener(drawerListener)
+        supportFragmentManager.addOnBackStackChangedListener {
+            val fragMan: FragmentManager = supportFragmentManager
+            val fragment = fragMan.findFragmentByTag(VISIBLE_FRAGMENT)
+            if (fragment is TopFragment) currentPosition = 0
+            if (fragment is PizzaFragment) currentPosition = 1
+            if (fragment is PastaFragment) currentPosition = 2
+            if (fragment is StoresFragment) currentPosition = 3
+            setActionBarTitle(currentPosition)
+            drawerList.setItemChecked(currentPosition, true)
+        }
+    }
+
+    private fun initView(savedInstanceState: Bundle?) {
+        titles = resources.getStringArray(R.array.titles)
+        drawerList = findViewById(R.id.drawer)
+        drawerLayout = findViewById(R.id.drawer_layout)
+        /* Display the correct fragment. */
+        if (savedInstanceState != null) {
+            currentPosition = savedInstanceState.getInt(POSITION)
+            setActionBarTitle(currentPosition)
+        } else {
+            selectItem(currentPosition)
+        }
+        /* Populate the ListView */
+        drawerList.adapter = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_activated_1, titles as Array<out String>
+        )
+        /* Create the ActionBarDrawerToggle */
+        drawerToggle = ActionBarDrawerToggle(
+            this, drawerLayout, null,
+            R.string.navigation_drawer_open, R.string.navigation_drawer_close
+        )
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+        supportActionBar?.setHomeButtonEnabled(true)
+    }
+
     private fun String.setShareActionIntent() {
         val intent = Intent(Intent.ACTION_SEND)
         intent.type = "text/plain"
@@ -189,7 +189,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     }
 
     private fun setActionBarTitle(position: Int) {
-        val title: String? = if (position == 0) {
+        val title: String = if (position == 0) {
             resources.getString(R.string.app_name)
         } else {
             titles[position]

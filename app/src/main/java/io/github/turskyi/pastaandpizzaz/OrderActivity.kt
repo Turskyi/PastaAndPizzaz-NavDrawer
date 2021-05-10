@@ -5,12 +5,16 @@ import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
-import kotlinx.android.synthetic.main.activity_order.*
+import io.github.turskyi.pastaandpizzaz.databinding.ActivityOrderBinding
 
-class OrderActivity : AppCompatActivity(R.layout.activity_order) {
+class OrderActivity : AppCompatActivity() {
+    private lateinit var binding: ActivityOrderBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setSupportActionBar(toolbar)
+        binding = ActivityOrderBinding.inflate(layoutInflater)
+        val view = binding.root
+        setContentView(view)
+        setSupportActionBar(binding.toolbar)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
     }
 
