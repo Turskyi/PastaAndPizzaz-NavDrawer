@@ -33,4 +33,9 @@
     <string name="order_name_hint">Please enter your name</string>
     <string name="order_details_hint">Please enter your order</string>
     <string name="restaurant_image">Restaurant image</string>
+    <string name="content_description_image">image</string>
+    <string name="title_activity_pizza_detail">Pizza Details</string>
+
+    <string name="welcome_text">We offer a range of freshly baked pizza and pasta dishes. Why not try some?</string>
+    <string name="content_description_button">button</string>
 </resources>

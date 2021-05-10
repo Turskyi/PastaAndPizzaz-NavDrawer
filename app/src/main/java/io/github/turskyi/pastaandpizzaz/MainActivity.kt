@@ -19,6 +19,7 @@ import androidx.drawerlayout.widget.DrawerLayout.DrawerListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentTransaction
+import io.github.turskyi.pastaandpizzaz.ui.OrderActivity
 import io.github.turskyi.pastaandpizzaz.ui.pasta.PastaFragment
 import io.github.turskyi.pastaandpizzaz.ui.pizza.PizzaFragment
 import io.github.turskyi.pastaandpizzaz.ui.stores.StoresFragment
@@ -35,7 +36,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     private lateinit var titles: Array<String>
     private lateinit var drawerList: ListView
     private lateinit var drawerLayout: DrawerLayout
-    private var currentPosition = 1
+    private var currentPosition = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -46,7 +47,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         /* Inflate the menu; this adds items to the app bar. */
         menuInflater.inflate(R.menu.menu_main, menu)
-        val menuItem = menu.findItem(R.id.action_share)
+        val menuItem:MenuItem = menu.findItem(R.id.action_share)
         shareActionProvider = MenuItemCompat.getActionProvider(menuItem) as ShareActionProvider
         "Want to join me for pizza?".setShareActionIntent()
         return super.onCreateOptionsMenu(menu)

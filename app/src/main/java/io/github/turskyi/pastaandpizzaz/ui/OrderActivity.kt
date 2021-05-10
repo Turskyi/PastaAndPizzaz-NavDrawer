@@ -1,10 +1,11 @@
-package io.github.turskyi.pastaandpizzaz
+package io.github.turskyi.pastaandpizzaz.ui
 
 import android.os.Bundle
 import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.snackbar.Snackbar
+import io.github.turskyi.pastaandpizzaz.R
 import io.github.turskyi.pastaandpizzaz.databinding.ActivityOrderBinding
 
 class OrderActivity : AppCompatActivity() {
