@@ -11,8 +11,8 @@ capabilities.
 
 - [Android](https://developer.android.com/studio/intro): Built
   using [Kotlin](https://kotlinlang.org/).
-- **Architecture
-  **: [Monolith](https://en.wikipedia.org/wiki/Monolithic_architecture).
+- **Architecture**:
+  [Monolith](https://en.wikipedia.org/wiki/Monolithic_architecture).
 - **Collapsing Toolbar**: For a smooth and dynamic UI.
 - **Grid of Pizzas**: Displays pizzas on the main screen; clicking opens a
   details screen.
