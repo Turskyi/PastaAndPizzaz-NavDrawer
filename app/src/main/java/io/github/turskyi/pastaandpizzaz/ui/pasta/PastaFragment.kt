@@ -8,7 +8,6 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.ListFragment
 import io.github.turskyi.pastaandpizzaz.R
 
-
 class PastaFragment : ListFragment() {
 
     override fun onCreateView(

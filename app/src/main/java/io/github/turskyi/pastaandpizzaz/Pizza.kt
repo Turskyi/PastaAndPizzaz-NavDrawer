@@ -1,10 +1,10 @@
 package io.github.turskyi.pastaandpizzaz
 
-data class Pizza constructor(
+data class Pizza(
     val name: String,
     val imageResourceId: Int
 ) {
-    // imitating retrieving objects from datasource
+    // Imitating retrieving objects from datasource.
     companion object {
         val pizzas = arrayOf(
             Pizza("Diavolo", R.drawable.pic_diavolo),

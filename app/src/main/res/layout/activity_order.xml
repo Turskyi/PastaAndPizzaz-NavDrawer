@@ -67,8 +67,8 @@
         android:layout_height="wrap_content"
         android:layout_gravity="end|bottom"
         android:layout_margin="16dp"
+        android:contentDescription="@string/content_description_button"
         android:onClick="onClickDone"
-        android:src="@drawable/ic_done_white_24dp"
-        android:contentDescription="@string/content_description_button" />
+        android:src="@drawable/ic_done_white_24dp" />
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>

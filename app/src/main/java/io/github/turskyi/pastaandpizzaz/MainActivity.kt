@@ -47,8 +47,9 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
     override fun onCreateOptionsMenu(menu: Menu): Boolean {
         /* Inflate the menu; this adds items to the app bar. */
         menuInflater.inflate(R.menu.menu_main, menu)
-        val menuItem:MenuItem = menu.findItem(R.id.action_share)
-        shareActionProvider = MenuItemCompat.getActionProvider(menuItem) as ShareActionProvider
+        val menuItem: MenuItem = menu.findItem(R.id.action_share)
+        shareActionProvider =
+            MenuItemCompat.getActionProvider(menuItem) as ShareActionProvider
         "Want to join me for pizza?".setShareActionIntent()
         return super.onCreateOptionsMenu(menu)
     }
@@ -73,6 +74,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
                 startActivity(intent)
                 true
             }
+
             else -> super.onOptionsItemSelected(item)
         }
     }
@@ -144,7 +146,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         /* Populate the ListView */
         drawerList.adapter = ArrayAdapter(
             this,
-            android.R.layout.simple_list_item_activated_1, titles as Array<out String>
+            android.R.layout.simple_list_item_activated_1,
+            titles as Array<out String>
         )
         /* Create the ActionBarDrawerToggle */
         drawerToggle = ActionBarDrawerToggle(
@@ -171,7 +174,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             3 -> StoresFragment()
             else -> TopFragment()
         }
-        val fragmentTransaction: FragmentTransaction = supportFragmentManager.beginTransaction()
+        val fragmentTransaction: FragmentTransaction =
+            supportFragmentManager.beginTransaction()
         fragmentTransaction.apply {
             /* adding a tag of "visible_fragment" to the replace() method. Every fragment that’s
              displayed in MainActivity will be tagged with this value. */
@@ -185,7 +189,8 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         setActionBarTitle(position)
 
         /* Close the drawer */
-        val drawerLayout = findViewById<View>(R.id.drawer_layout) as DrawerLayout
+        val drawerLayout =
+            findViewById<View>(R.id.drawer_layout) as DrawerLayout
         drawerLayout.closeDrawer(drawerList)
     }
 

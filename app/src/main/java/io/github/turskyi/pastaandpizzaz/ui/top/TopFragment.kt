@@ -15,13 +15,18 @@ import io.github.turskyi.pastaandpizzaz.ui.pizza.CaptionedImagesAdapter
 import io.github.turskyi.pastaandpizzaz.ui.pizza.PizzaDetailActivity
 
 
-class TopFragment :Fragment() {
+class TopFragment : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val layout: RelativeLayout = inflater.inflate(R.layout.fragment_top, container, false) as RelativeLayout
-        val pizzaRecycler = layout.findViewById<View>(R.id.pizza_recycler) as RecyclerView
+        val layout: RelativeLayout = inflater.inflate(
+            R.layout.fragment_top,
+            container,
+            false
+        ) as RelativeLayout
+        val pizzaRecycler =
+            layout.findViewById<View>(R.id.pizza_recycler) as RecyclerView
         val pizzaNames = arrayOfNulls<String>(2)
         for (i in 0..1) {
             pizzaNames[i] = Pizza.pizzas[i].name
@@ -35,7 +40,7 @@ class TopFragment :Fragment() {
         val adapter = CaptionedImagesAdapter(pizzaNames, pizzaImages)
         pizzaRecycler.adapter = adapter
         adapter.setListener(object : CaptionedImagesAdapter.Listener {
-           override fun onClick(position: Int) {
+            override fun onClick(position: Int) {
                 val intent = Intent(activity, PizzaDetailActivity::class.java)
                 intent.putExtra(PizzaDetailActivity.EXTRA_PIZZA_ID, position)
                 requireActivity().startActivity(intent)

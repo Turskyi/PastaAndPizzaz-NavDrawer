@@ -20,7 +20,7 @@ internal class CaptionedImagesAdapter(
         fun onClick(position: Int)
     }
 
-   override fun getItemCount()= captions.size
+    override fun getItemCount() = captions.size
 
     fun setListener(listener: Listener?) {
         this.listener = listener
@@ -36,14 +36,14 @@ internal class CaptionedImagesAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val cardView: CardView = holder.cardView
-        val imageView = cardView.findViewById(R.id.info_image) as ImageView
+        val imageView: ImageView = cardView.findViewById(R.id.info_image)
         val drawable: Drawable? = ContextCompat.getDrawable(
             cardView.context,
             imageIds[position]
         )
         imageView.setImageDrawable(drawable)
         imageView.contentDescription = captions[position]
-        val textView = cardView.findViewById(R.id.info_text) as TextView
+        val textView: TextView = cardView.findViewById(R.id.info_text)
         textView.text = captions[position]
         cardView.setOnClickListener {
             listener?.onClick(position)
